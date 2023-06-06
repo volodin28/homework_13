@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+from .models import Cookie
 
-def index(request):
-    return render(request, "../factory/templates/factory/../factory/templates/index.html")
+
+def cookies_list(request):
+    cookies = Cookie.objects.all()
+    return render(request, "cookies_list.html", {"cookies": cookies})
