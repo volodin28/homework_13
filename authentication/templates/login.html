@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <p>You are login as {{ user.username }}</p>
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+{% else %}
+    <h2>Увійти</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+{% endif %}
+
+{% endblock content%}

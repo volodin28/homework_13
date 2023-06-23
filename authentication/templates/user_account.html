@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Акаунт {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <div class="container my-5">
+        <p>Ви увійшли як {{ user.username }}</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Вийти</button>
+        </form>
+    </div>
+    {% else %}
+    Ви не зареєстровані. Будь ласка, <a href="{% url 'login' %}">увійдіть</a> або <a href="{% url 'registration' %}"> зареєструйтесь</a>
+{% endif %}
+
+{% endblock content %}

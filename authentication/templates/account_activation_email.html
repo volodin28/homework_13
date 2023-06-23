@@ -1,0 +1,7 @@
+{% autoescape off %}
+Привіт, {{ user.username }},
+
+Будь ласка, натисніть на посилання нижче, щоб підтвердити свою реєстрацію:
+
+http://{{ domain }}{% url 'activate' id=id token=token %}
+{% endautoescape %}
