@@ -12,8 +12,10 @@
             <button type="submit" class="btn btn-danger">Вийти</button>
         </form>
     </div>
-    {% else %}
-    Ви не зареєстровані. Будь ласка, <a href="{% url 'login' %}">увійдіть</a> або <a href="{% url 'registration' %}"> зареєструйтесь</a>
+{% else %}
+    <div class="container my-5">
+    Ви не зареєстровані. Будь ласка, <a href="{% url 'login' %}">увійдіть</a> або <a href="{% url 'signup' %}"> зареєструйтесь</a>
+    </div>
 {% endif %}
 
 {% endblock content %}

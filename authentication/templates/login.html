@@ -3,21 +3,22 @@
 {% load bootstrap %}
 
 {% block content %}
-
     {% if user.is_authenticated %}
-    <p>You are login as {{ user.username }}</p>
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-    </form>
-{% else %}
-    <h2>Увійти</h2>
-    <form method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
+        <p>Ви увійшли як {{ user.username }}</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Вийти</button>
+        </form>
+    {% else %}
+        <div class="container my-5">
+            <h2>Увійти</h2>
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Username"> <br>
+                <input type="password" name="password" placeholder="Пароль">
+                <button type="submit">Увійти</button> <br>
+            </form>
+        </div>
 {% endif %}
 
 {% endblock content%}
