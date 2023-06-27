@@ -10,7 +10,7 @@ from .tokens import account_activation_token
 
 
 def signup_view(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
@@ -18,18 +18,21 @@ def signup_view(request):
             user.save()
 
             current_site = get_current_site(request)
-            message = render_to_string('account_activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'id': user.pk,
-                'token': account_activation_token.make_token(user),
-            })
+            message = render_to_string(
+                "account_activation_email.html",
+                {
+                    "user": user,
+                    "domain": current_site.domain,
+                    "id": user.pk,
+                    "token": account_activation_token.make_token(user),
+                },
+            )
             user.email_user("Підтвердіть регістрацію", message)
 
-            return redirect('home')
+            return redirect("home")
     else:
         form = SignUpForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, "signup.html", {"form": form})
 
 
 def activate(request, id, token):
@@ -67,4 +70,3 @@ def login_view(request):
 
 def user_account_view(request):
     return render(request, "user_account.html", {"user": request.user})
-

@@ -9,5 +9,6 @@ def home(request):
 def about(request):
     return render(request, "about.html")
 
+
 # send_mail('Subject here', 'Here is the message.', '3volodin28@gmail.com', ['2volodin28@gmail.com'],
 #           fail_silently=False)

@@ -10,5 +10,5 @@ class CookieForm(forms.ModelForm):
             "name": "Назва",
             "full_name": "Повна назва",
             "description": "Опис",
-            "image": "Зображення"
+            "image": "Зображення",
         }

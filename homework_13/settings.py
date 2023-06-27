@@ -20,7 +20,7 @@ load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# TEMPLATE_DIR = os.path.join(BASE_DIR, "homework_13", "../sso/templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "authentication",
     "whitenoise.runserver_nostatic",
     "bootstrapform",
+    "sso",
 ]
 
 MIDDLEWARE = [
@@ -161,11 +162,16 @@ AWS_S3_SIGNATURE_VERSION = "s3v4"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Sendgrid SMS
-SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST = "smtp.sendgrid.net"
+EMAIL_HOST_USER = "apikey"  # this is exactly the value 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "3volodin28@gmail.com"
+
+# Load Auth0 application settings into memory
+AUTH0_DOMAIN = os.environ.get("AUTH0_DOMAIN")
+AUTH0_CLIENT_ID = os.environ.get("AUTH0_CLIENT_ID")
+AUTH0_CLIENT_SECRET = os.environ.get("AUTH0_CLIENT_SECRET")
